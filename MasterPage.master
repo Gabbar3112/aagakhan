@@ -1,0 +1,706 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>A K R S P (INDIA)</title>
+    
+    <!--http://www.codecovers.eu/materialadmin/pages/blank-->
+
+    <!--https://lipis.github.io/bootstrap-sweetalert/-->  <!--For Swal Message Format-->
+
+    <!-- BEGIN META -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="your,keywords" />
+    <meta name="description" content="Short explanation about this website" />
+    <!-- END META -->
+
+    <!-- BEGIN STYLESHEETS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css' />
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/materialadmin.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/material-design-iconic-font.min.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/select2.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/multi-select.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/datepicker3.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/jquery-ui-theme.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-colorpicker.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-tagsinput.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/typeahead.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/dropzone-theme.css" />
+    <script src="assets/js/jquery.min.js"></script>
+    <link href="assets/css/sweetalert.css" rel="stylesheet" />
+
+    <!-- END STYLESHEETS -->
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="menubar-hoverable header-fixed menubar-pin ">
+
+    <!-- BEGIN HEADER-->
+    <header id="header">
+        <div class="headerbar">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="headerbar-left">
+                <ul class="header-nav header-nav-options">
+                    <li class="header-nav-brand">
+                        <div class="brand-holder">
+                            <a href="Dashboard.aspx">
+                                <span class="text-lg text-bold text-primary" style="font-size:12px">A K R S P (INDIA)</span><br />
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="headerbar-right">
+                <ul class="header-nav header-nav-options">
+                </ul>
+                <!--end .header-nav-options -->
+                <ul class="header-nav header-nav-profile">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+                            <img src="assets/img/wordpress-user-roles-640x400.png" alt="" />
+                            <span class="profile-info"><%:Session["UserName"]%>
+                                <small><%:Session["UserType"]%></small>
+                                <small><%:Session["LoginedUser"]%></small>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu animation-dock">
+                            
+                            <li><a href="#"><i class="fa fa-fw fa-lock"></i>Change Password</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" onclick="ClickLogout();"><i class="fa fa-fw fa-power-off text-danger"></i>Logout</a></li>
+                        </ul>
+                        <!--end .dropdown-menu -->
+                    </li>
+                    <!--end .dropdown -->
+                </ul>
+                <!--end .header-nav-profile -->
+       
+                <!--end .header-nav-toggle -->
+            </div>
+            <!--end #header-navbar-collapse -->
+        </div>
+    </header>
+    <!-- END HEADER-->
+
+    <form id="form1" runat="server" class="form">
+         <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnablePageMethods="true">
+        </cc1:ToolkitScriptManager>
+        <!-- BEGIN BASE-->
+        <div id="base">
+
+            <div class="offcanvas">
+            </div>
+            <div id="content">
+                <section>
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                  
+                </section>
+
+
+            </div>
+            <!--end #content-->
+            <!-- END CONTENT -->
+
+            <!-- BEGIN MENUBAR-->
+            <div id="menubar" class="menubar-inverse ">
+                <div class="menubar-fixed-panel">
+                    <div>
+                        <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                    <div class="expanded">
+                        <a href="dashboard.html">
+                            <span class="text-lg text-bold text-primary ">AAGAKHAN&nbsp;TRUST</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="menubar-scroll-panel">
+                    <!-- BEGIN MAIN MENU -->
+
+                    <ul id="main-menu" class="gui-controls">
+                        <!-- BEGIN DASHBOARD -->
+                        <li id="liDashboard" runat="server" class="active">
+                            <a href="Dashboard.aspx">
+                                <div class="gui-icon"><i class="md md-home"></i></div>
+                                <span class="title">મુખ્ય પૃષ્ઠ</span>
+                            </a>
+                        </li>
+                        <!--end /menu-li -->
+                        <!-- END DASHBOARD -->
+
+                        <!-- BEGIN UI -->
+                        <li class="gui-folder" id="liMaster" style="display: none" runat="server">
+                            <a>
+                                <div class="gui-icon"><i class="fa fa-table"></i></div>
+                                <span class="title">માસ્ટર</span>
+                            </a>
+                            
+                            <ul class="nav nav-second-level" id="ulMaster">
+                                <li id="licirclemaster" runat="server" style="display: none"><a id="aCircleMaster" runat="server" href="CircleMaster.aspx"><span class="title">વર્તુળની માહિતી</span></a></li>
+                                <li id="lidivisionmaster" runat="server" style="display: none"><a id="aDivisionMaster" runat="server" href="DivisionMaster.aspx"><span class="title">વિભાગની માહિતી</span></a></li>
+                                <li id="lisubdivisionmaster" runat="server" style="display: none"><a id="aSubDivisionMaster" runat="server" href="SubDivisionMaster.aspx"><span class="title">પેટા વિભાગની માહિતી</span></a></li>
+                                <li id="lisectionmaster" runat="server" style="display: none"><a id="aSectionMaster" runat="server" href="SectionMaster.aspx"><span class="title">સેક્સનની માહિતી</span></a></li>
+                                <li id="libeatmaster" runat="server" style="display: none"><a id="aBeatMaster" runat="server" href="BeatMaster.aspx"><span class="title">બીટની માહિતી</span></a></li>
+                                <li id="licanalmaster" runat="server" style="display: none"><a id="aCanalMaster" runat="server" href="CanalMaster.aspx"><span class="title">નહેરની માહિતી</span></a></li>
+                                <li id="lifarmermaster" runat="server" style="display: none"><a id="aFarmerMaster" runat="server" href="FarmerMaster.aspx"><span class="title">ખેડૂતની માહિતી</span></a></li>
+                                <li id="liinstitutetypemaster" runat="server" style="display: none"><a id="aInstituteTypeMaster" runat="server" href="InstituteTypeMaster.aspx" ><span class="title">પિયત મંડળી ના પ્રકારની માહિતી</span></a></li>
+                                <li id="liinstitutemaster" runat="server" style="display: none"><a id="aInstituteMaster" runat="server" href="InstituteMaster.aspx" ><span class="title">પિયત મંડળી ની માહિતી</span></a></li>
+                                <li id="limembermaster" runat="server" style="display: none"><a id="aMemberMaster" runat="server" href="MemberMaster.aspx" ><span class="title">કુટુંબની માહિતી</span></a></li>
+                                <li id="lipakmaster" runat="server" style="display: none"><a id="aPakMaster" runat="server" href="PakMaster.aspx"><span class="title">પાકની માહિતી</span></a></li>
+                                <li id="libhavpatrakmaster" runat="server" style="display: none"><a id="aBhavPatrakMaster" runat="server" href="BhavPatrakMaster.aspx" ><span class="title">ભાવપત્રકની માહિતી</span></a></li>
+                                
+                                <li id="liactivityeventtrainingmaster" runat="server" style="display: none"><a id="aActivityEventTrainingMaster" runat="server" href="ActivityEventTrainingMaster.aspx"><span class="title">પ્રવૃત્તિ/ઇવેન્ટ/તાલીમ <br />ની માહિતી</span></a></li>
+                                <li id="liactivityeventtrainingtype" runat="server" style="display: none"><a id="aActivityEventTrainingType" runat="server" href="ActivityEventTrainingType.aspx"><span class="title">પ્રવૃત્તિ/ઇવેન્ટ/તાલીમ<br />ના પ્રકારની માહિતી</span></a></li>
+                                <li id="liactivityeventtrainingvigat" runat="server" style="display: none"><a id="aActivityEventTrainingVigat" runat="server" href="ActivityEventTrainingVigat.aspx"><span class="title">પ્રવૃત્તિ/ઇવેન્ટ/તાલીમ <br />ની વિગત ની માહિતી</span></a></li>
+                            </ul>
+                        </li>
+                        <!-- END UI -->
+
+                        <!-- BEGIN TRANSECTION -->
+                        <li class="gui-folder" runat="server" id="liTransaction" style="display: none">
+                            <a>
+                                <div class="gui-icon"><span class="glyphicon glyphicon-list-alt"></span></div>
+                                <span class="title">વહીવટી માહિતી</span>
+                            </a>
+                            <!--start submenu -->
+                              <ul class="nav nav-second-level" id="ulTransaction">
+                                <li id="lisectionvillagemapping" runat="server" style="display: none"><a id="aSectionVillageMapping" runat="server" href="SectionVillageMapping.aspx"><span class="title">ગામ પ્રમાણે સેક્સનની વિગત</span></a></li>
+                                <li id="livillagebeatmapping" runat="server" style="display: none"><a id="aVillageBeatMapping" runat="server" href="VillageBeatMapping.aspx"><span class="title">બીટ પ્રમાણે ગામની વિગત</span></a></li>
+                                <li id="liinstitutevillagemapping" runat="server" style="display: none"><a id="aInstituteVillageMapping" runat="server" href="InstituteVillageMapping.aspx"><span class="title">પિયત મંડળી પ્રમાણે ગામની વિગત</span></a></li>
+                                <li id="libeatcanalmapping" runat="server" style="display: none"><a id="aBeatCanalMapping" runat="server" href="BeatCanalMapping.aspx"><span class="title">બીટ પ્રમાણે નહેર ની વિગત</span></a></li>
+                                
+                                <li id="liactivityeventtrainingdetails" runat="server" style="display: none"><a id="aActivityEventTrainingDetails" runat="server" href="ActivityEventTrainingDetails.aspx"><span class="title">પ્રવૃત્તિ/ઇવેન્ટ/તાલીમ<br />ની વિગત</span></a></li>
+                                <li id="limangnapatrak" runat="server" style="display: none"><a id="aMangnaPatrak" runat="server" href="MangnaPatrak.aspx"><span class="title">માંગણા પત્રક</span></a></li>
+                                <li id="limangnapatraklist" runat="server" style="display: none"><a id="aManganaPatrakList" runat="server" href="ManganaPatrakList.aspx"><span class="title">માંગણા પત્રક ની યાદી</span></a></li>
+                                <li id="lireceiptmaster" runat="server" style="display: none"><a id="aReceiptMaster" runat="server" href="BakiFormDetail.aspx"><span class="title">રસીદ પત્રક</span></a></li>
+                            </ul>
+                            <!--end /submenu -->
+                        </li>
+                        <!--end /menu-li -->
+                        <!-- END TRANSECTION -->
+
+                        <!-- BEGIN REPORTS -->
+                        <li class="gui-folder" runat="server" id="liReport" style="display: none">
+                            <a>
+                                <div class="gui-icon"><span class="glyphicon glyphicon-list-alt"></span></div>
+                                <span class="title">અહેવાલ</span>
+                            </a>
+                            <!--start submenu -->
+                              <ul class="nav nav-second-level" id="ulReport">
+                                <li id="lirptcanaldetail" runat="server" style="display: none"><a id="aRptCanalDetail" runat="server" href="RptCanalDetail.aspx"><span class="title">નહેર ની માહિતી અહેવાલ <br />Summary</span></a></li>
+                                <li id="lirptinstitutesummary" runat="server" style="display: none"><a id="aRptInstituteSummary" runat="server" href="RptInstituteSummary.aspx"><span class="title">મંડળી પ્રમાણે અહેવાલ <br />Summary</span></a></li>
+                                <li id="lirptinstitutedetail" runat="server" style="display: none"><a id="aRptInstituteDetail" runat="server" href="RptInstituteDetail.aspx"><span class="title">મંડળી પ્રમાણે અહેવાલ <br />Details</span></a></li>
+                                <li id="lirptPIMmemberdetail" runat="server" style="display: none"><a id="aRptPIMMemberDetail" runat="server" href="RptPIMMemberDetail.aspx"><span class="title">મંડળીના પ્રકાર પ્રમાણે અહેવાલ <br />PIM Member details</span></a></li>
+                                <li id="lirptactivityeventtraining" runat="server" style="display: none"><a id="aRptActivityEventTraining" runat="server" href="RptActivityEventTraining.aspx"><span class="title">પ્રવૃત્તિ/ઇવેન્ટ/તાલીમ<br />પ્રમાણે અહેવાલ</span></a></li>
+                                <li id="libakiformdetail" runat="server" style="display: none"><a id="aBakiFormDetail" runat="server" href="BakiFormDetail.aspx"><span class="title">બાકી ફોર્મ માહિતી</span></a></li>
+                                
+                                <li id="limembershipdetail" runat="server" style="display: none"><a id="aMembershipDetail" runat="server" href="RptMembershipData.aspx"><span class="title">સભ્યપદ ની માહિતી<br />Membership data </span></a></li>
+                                <li id="lirptform12" runat="server" style="display: none"><a id="aRptForm12" runat="server" href="RptForm12.aspx"><span class="title">માંગણા ફોર્મેટ (ફોર્મ ૧૨)</span></a></li>
+                                <li id="liarptsummaryofwaterchargerecovery" runat="server" style="display: none"><a id="aRptSummaryOfWaterchargeRecovery" runat="server" href="RptSummaryOfWaterchargeRecovery.aspx"><span class="title">Summary Of<br />Water Charge Recovery</span></a></li>
+                            </ul>
+                            <!--end /submenu -->
+                        </li>
+                        <!--end /menu-li -->
+                        <!-- END REPORTS -->
+
+
+                         <!-- BEGIN MAP -->
+                        <li class="gui-folder" runat="server" id="liMap" style="display: none">
+                            <a>
+                                <div class="gui-icon"><span class="glyphicon glyphicon-list-alt"></span></div>
+                                <span class="title">નકશો</span>
+                            </a>
+                            <!--start submenu -->
+                              <ul class="nav nav-second-level" id="ulMap">
+                                <li id="liPiyatMandliMap" runat="server" style="display: none"><a id="aMap" runat="server" href="Map.aspx"><span class="title">પિયત મંડળી પ્રમાણે નકશો</span></a></li>
+                            </ul>
+                            <!--end /submenu -->
+                        </li>
+                        <!--end /menu-li -->
+                        <!-- END MAP -->
+
+
+                          <!-- BEGIN UTILITY -->
+                        <li class="gui-folder" runat="server" id="liUtility" style="display: none">
+                            <a>
+                                <div class="gui-icon"><span class="glyphicon glyphicon-list-alt"></span></div>
+                                <span class="title">UTILITY</span>
+                            </a>
+                            <!--start submenu -->
+                             <ul class="nav nav-second-level" id="ulUtility">
+                                <li id="liuser" runat="server"  style="display: none"><a href="UserMaster.aspx" id="aUserMaster"><span class="title">વપરાશકર્તાની માહિતી</span></a></li>
+                                <li id="liuserrights" runat="server"  style="display: none"><a href="UserRights.aspx" id="aUserRights"><span class="title">સર્વાધિકારની માહિતી</span></a></li>
+                            </ul>
+                            <!--end /submenu -->
+                        </li>
+                        <!--end /menu-li -->
+                        <!-- END UTILITY -->
+
+
+                          <!-- BEGIN DOWNLOAD -->
+                        <li class="gui-folder" id="liDownload">
+                            <a>
+                                <div class="gui-icon"><i class="fa fa-download" aria-hidden="true"></i></div>
+                                <span class="title">ડાઉનલોડ</span>
+                            </a>
+                            <!--start submenu -->
+                             <ul class="nav nav-second-level" id="ulDownload">
+                                <li><a href="Download/TW6.exe"><span class="title">TEAM VIEWER</span></a></li>
+                                <li><a href="Download/AA_v3.5.exe"><span class="title">AMMY ADMIN</span></a></li>
+                                <li><a href="Download/AnyDesk.exe"><span class="title">ANY DESK</span></a></li>
+                            </ul>
+                            <!--end /submenu -->
+                        </li>
+                        <!--end /menu-li -->
+                        <!-- END DOWNLOAD -->
+
+
+                    </ul>
+                    <!--end .main-menu -->
+                    <!-- END MAIN MENU -->
+
+                    <div class="menubar-foot-panel">
+                        <small class="no-linebreak hidden-folded">
+                            <span class="opacity-75">Copyright &copy; 2018</span><br /><strong style="font-size:11px">Agakhan Rural Support Programee (INDIA)</strong>
+                        </small>
+                    </div>
+                </div>
+                <!--end .menubar-scroll-panel-->
+            </div>
+            <!--end #menubar-->
+            <!-- END MENUBAR -->
+
+            <!-- BEGIN OFFCANVAS RIGHT -->
+            <div class="offcanvas">
+
+
+
+                <!-- BEGIN OFFCANVAS SEARCH -->
+                <div id="offcanvas-search" class="offcanvas-pane width-8">
+                    <div class="offcanvas-head">
+                        <header class="text-primary">Search</header>
+                        <div class="offcanvas-tools">
+                            <a class="btn btn-icon-toggle btn-default-light pull-right" data-dismiss="offcanvas">
+                                <i class="md md-close"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offcanvas-body no-padding">
+                        <ul class="list ">
+                            <li class="tile divider-full-bleed">
+                                <div class="tile-content">
+                                    <div class="tile-text"><strong>A</strong></div>
+                                </div>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar4.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Alex Nelson
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar9.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Ann Laurens
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile divider-full-bleed">
+                                <div class="tile-content">
+                                    <div class="tile-text"><strong>J</strong></div>
+                                </div>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar2.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Jessica Cruise
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar8.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Jim Peters
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile divider-full-bleed">
+                                <div class="tile-content">
+                                    <div class="tile-text"><strong>M</strong></div>
+                                </div>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar5.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Mabel Logan
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar11.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Mary Peterson
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar3.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Mike Alba
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile divider-full-bleed">
+                                <div class="tile-content">
+                                    <div class="tile-text"><strong>N</strong></div>
+                                </div>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar6.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Nathan Peterson
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile divider-full-bleed">
+                                <div class="tile-content">
+                                    <div class="tile-text"><strong>P</strong></div>
+                                </div>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar7.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Philip Ericsson
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="tile divider-full-bleed">
+                                <div class="tile-content">
+                                    <div class="tile-text"><strong>S</strong></div>
+                                </div>
+                            </li>
+                            <li class="tile">
+                                <a class="tile-content ink-reaction" href="#offcanvas-chat" data-toggle="offcanvas" data-backdrop="false">
+                                    <div class="tile-icon">
+                                        <img src="assets/img/avatar10.jpg" alt="" />
+                                    </div>
+                                    <div class="tile-text">
+                                        Samuel Parsons
+					
+                                    <small>123-123-3210</small>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--end .offcanvas-body -->
+                </div>
+                <!--end .offcanvas-pane -->
+                <!-- END OFFCANVAS SEARCH -->
+
+
+
+
+                <!-- BEGIN OFFCANVAS CHAT -->
+                <div id="offcanvas-chat" class="offcanvas-pane style-default-light width-12">
+                    <div class="offcanvas-head style-default-bright">
+                        <header class="text-primary">Chat with Ann Laurens</header>
+                        <div class="offcanvas-tools">
+                            <a class="btn btn-icon-toggle btn-default-light pull-right" data-dismiss="offcanvas">
+                                <i class="md md-close"></i>
+                            </a>
+                            <a class="btn btn-icon-toggle btn-default-light pull-right" href="#offcanvas-search" data-toggle="offcanvas" data-backdrop="false">
+                                <i class="md md-arrow-back"></i>
+                            </a>
+                        </div>
+                        <form class="form">
+                            <div class="form-group floating-label">
+                                <textarea name="sidebarChatMessage" id="sidebarChatMessage" class="form-control autosize" rows="1"></textarea>
+                                <label for="sidebarChatMessage">Leave a message</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="offcanvas-body">
+                        <ul class="list-chats">
+                            <li>
+                                <div class="chat">
+                                    <div class="chat-avatar">
+                                        <img class="img-circle" src="assets/img/avatar1.jpg" alt="" />
+                                    </div>
+                                    <div class="chat-body">
+                                        Yes, it is indeed very beautiful.
+					
+                                    <small>10:03 pm</small>
+                                    </div>
+                                </div>
+                                <!--end .chat -->
+                            </li>
+                            <li class="chat-left">
+                                <div class="chat">
+                                    <div class="chat-avatar">
+                                        <img class="img-circle" src="assets/img/avatar9.jpg" alt="" />
+                                    </div>
+                                    <div class="chat-body">
+                                        Did you see the changes?
+					
+                                    <small>10:02 pm</small>
+                                    </div>
+                                </div>
+                                <!--end .chat -->
+                            </li>
+                            <li>
+                                <div class="chat">
+                                    <div class="chat-avatar">
+                                        <img class="img-circle" src="assets/img/avatar1.jpg" alt="" />
+                                    </div>
+                                    <div class="chat-body">
+                                        I just arrived at work, it was quite busy.
+					
+                                    <small>06:44pm</small>
+                                    </div>
+                                    <div class="chat-body">
+                                        I will take look in a minute.
+					
+                                    <small>06:45pm</small>
+                                    </div>
+                                </div>
+                                <!--end .chat -->
+                            </li>
+                            <li class="chat-left">
+                                <div class="chat">
+                                    <div class="chat-avatar">
+                                        <img class="img-circle" src="assets/img/avatar9.jpg" alt="" />
+                                    </div>
+                                    <div class="chat-body">
+                                        The colors are much better now.
+				
+                                    </div>
+                                    <div class="chat-body">
+                                        The colors are brighter than before.
+						I have already sent an example.
+						This will make it look sharper.
+					
+                                    <small>Mon</small>
+                                    </div>
+                                </div>
+                                <!--end .chat -->
+                            </li>
+                            <li>
+                                <div class="chat">
+                                    <div class="chat-avatar">
+                                        <img class="img-circle" src="assets/img/avatar1.jpg" alt="" />
+                                    </div>
+                                    <div class="chat-body">
+                                        Are the colors of the logo already adapted?
+					
+                                    <small>Last week</small>
+                                    </div>
+                                </div>
+                                <!--end .chat -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!--end .offcanvas-body -->
+                </div>
+                <!--end .offcanvas-pane -->
+                <!-- END OFFCANVAS CHAT -->
+
+            </div>
+            <!-- END OFFCANVAS RIGHT -->
+
+        </div>
+
+        <!--end #base-->
+        <!-- END BASE -->
+   </form>
+
+    <!-- BEGIN JAVASCRIPT -->
+
+        <script src="assets/js/sweetalert.min.js"></script>
+        
+       <%-- <script src="assets/js/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/spin.min.js"></script>
+        <script src="assets/js/jquery.autosize.min.js"></script>
+        <script src="assets/js/jquery.inputmask.bundle.min.js"></script>
+        <script src="assets/js/bootstrap-tagsinput.min.js"></script>
+        <script src="assets/js/jquery.nanoscroller.min.js"></script>
+        <script src="assets/js/63d0445130d69b2868a8d28c93309746.js"></script>
+        <script src="assets/js/Demo.js"></script>
+        <script src="assets/js/bootstrap-datepicker.js"></script>
+        <script src="assets/js/typeahead.bundle.min.js"></script>--%>
+
+       <script src="pagejscss/ASPSnippets_Pager.min.js"></script>
+    <link href="assets/css/jquery.dataTables.css" rel="stylesheet" />
+
+    <%--<script src="assets/js/jquery-1.11.2.min.js"></script>--%>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/spin.min.js"></script>
+    <script src="assets/js/jquery.autosize.min.js"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/bootstrap-tagsinput.min.js"></script>
+    <script src="assets/js/jquery.multi-select.js"></script>
+    <script src="assets/js/jquery.inputmask.bundle.min.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/bootstrap-colorpicker.min.js"></script>
+    <script src="assets/js/typeahead.bundle.min.js"></script>
+    <script src="assets/js/dropzone.min.js"></script>
+    <script src="assets/js/jquery.nanoscroller.min.js"></script>
+    <script src="assets/js/63d0445130d69b2868a8d28c93309746.js"></script>
+    <script src="assets/js/Demo.js"></script>
+    <%--<script src="../assets/js/DemoFormComponents.js"></script>--%>
+
+
+
+
+   
+
+        <!-- END JAVASCRIPT -->
+
+
+
+    
+ <script type="text/javascript">
+
+     function SetMenu(mainli, mainul, subli1, a1, subul1, subli2) {
+       
+         var db = document.getElementById("liDashboard");
+         var mainliMenu = document.getElementById(mainli);
+         var mainulMenu = document.getElementById(mainul);
+         var subli1Menu = document.getElementById(subli1);
+         var a1Menu = document.getElementById(a1);
+
+         db.removeAttribute("class");
+         if (subli1 != "") {
+             mainliMenu.setAttribute("class", "gui-folder active expanded");
+             mainulMenu.setAttribute("class", "nav nav-second-level in collapse");
+             subli1Menu.setAttribute("class", "active expanded");
+             a1Menu.setAttribute("class", "active");
+         }
+         else {
+             mainliMenu.setAttribute("class", "active");
+         }
+         
+     }
+
+
+
+        function pageLoad() {
+            $('.cssdate').datepicker({ autoclose: true, todayHighlight: true, format: "dd-mm-yyyy" });
+           
+
+            $(".time12-mask").inputmask('hh:mm t', { placeholder: 'hh:mm xm', alias: 'time12', hourFormat: '12' });
+
+        }
+
+        function ClickLogout() {
+            $.ajax({
+                type: "POST",
+                url: "CommonMethods.aspx/Logout",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    DisableBackButton();
+                    window.onload = DisableBackButton;
+                    window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+                    window.onunload = function () { void (0) }
+                    window.location.href = "Index.aspx";
+                }
+            });
+        }
+
+        function DisableBackButton() {
+            window.history.forward()
+        }
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 37 && charCode != 39)
+                return false;
+
+            return true;
+        }
+
+        function isDecimalKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 37 && charCode != 39)
+                return false;
+
+            return true;
+        }
+
+        function OpenPage(pagename) {
+            window.location = pagename;
+        }
+    </script>
+</body>
+</html>
